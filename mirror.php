@@ -249,6 +249,8 @@ $notes = '';
 
 if ( array_key_exists( 'changelog', $data ) ) {
 	$notes = $data['changelog'];
+
+	$notes = preg_replace('/<style\b[^>]*>(.*?)<\/style>/is', '', $notes );
 }
 
 /**
@@ -261,9 +263,10 @@ start_group( '🚀 GitHub release' );
 
 run_command(
 	sprintf(
-		'gh release create %s %s --notes %s',
-		$version,
+		'gh release create %s %s --title %s --notes %s',
+		$tag,
 		$zip_file,
+		escapeshellarg( $version ),
 		escapeshellarg( $notes )
 	)
 );
