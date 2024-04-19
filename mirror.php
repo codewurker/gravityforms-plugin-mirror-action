@@ -65,3 +65,5 @@ function get_required_input( $name ) {
  */
 $license_key     = get_required_input( 'license-key' );
 $plugin_basename = get_required_input( 'plugin-basename' );
+
+echo $plugin_basename;
