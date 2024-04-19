@@ -1,0 +1,27 @@
+name: 'Gravity Forms plugin mirror automation'
+description: 'Automate Gravity Forms plugin mirroring on GitHub.'
+author: 'codewurker'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
+
+inputs:
+  license-key:
+    description: >
+      Gravity Forms license key.
+    required: true
+  plugin-basename:
+    description: >
+      Gravity Forms plugin basename.
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - id: deploy
+      run: php ${{ github.action_path }}/mirror.php
+      shell: bash
+      env:
+        INPUT_LICENSE-KEY: ${{ inputs.license-key }}
+        INPUT_PLUGIN-BASENAME: ${{ inputs.plugin-basename }}
