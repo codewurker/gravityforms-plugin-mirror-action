@@ -233,12 +233,13 @@ run_command(
 				$version
 			)
 		)
-	)
+	),
+	null
 );
 
 run_command( 'gh auth status' );
 
-run_command( 'git push origin main' );
+run_command( 'git push origin main', null );
 
 end_group();
 
