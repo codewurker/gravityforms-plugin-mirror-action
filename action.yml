@@ -23,5 +23,6 @@ runs:
       run: php ${{ github.action_path }}/mirror.php
       shell: bash
       env:
+        GITHUB_TOKEN: ${{ github.token }}
         INPUT_LICENSE-KEY: ${{ inputs.license-key }}
         INPUT_PLUGIN-BASENAME: ${{ inputs.plugin-basename }}
