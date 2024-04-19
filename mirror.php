@@ -66,4 +66,16 @@ function get_required_input( $name ) {
 $license_key     = get_required_input( 'license-key' );
 $plugin_basename = get_required_input( 'plugin-basename' );
 
-echo $plugin_basename;
+$url = 'https://gravityapi.com/wp-content/plugins/gravitymanager/api.php';
+
+$url .= '?' . http_build_query(
+	[
+		'op'   => 'get_plugin',
+		'slug' => $plugin_basename,
+		'key'  => $license_key,
+	],
+	'',
+	'&'
+);
+
+echo $url;
